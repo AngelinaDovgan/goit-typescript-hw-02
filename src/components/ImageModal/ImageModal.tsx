@@ -23,8 +23,7 @@ const ImageModal: React.FC<ImageModalProps> = ({isOpen, onRequestClose, image: {
             contentLabel='Modal Window'
             shouldCloseOnEsc={true}
             shouldCloseOnOverlayClick={true}
-            className={css.content}
-            imgClassName={css.img}
+            className={css.img}
             overlayClassName={css.overlay}
         >
             <img src={regular} alt={alt_description} />
