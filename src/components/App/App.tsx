@@ -7,34 +7,35 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
 import './App.css';
+import { Image } from './types';
 
 
 
-export default function App() {
-  const [gallery, setGallery] = useState([]);
-  const [isloading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState(""); 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+export default function App(): JSX.Element {
+  const [gallery, setGallery] = useState<Image[]>([]);
+  const [isloading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>(""); 
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   
-  const handleSearch = (newQuery) => {
+  const handleSearch = (newQuery: string): void => {
     setQuery(newQuery);
     setPage(1);
     setGallery([]);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(page + 1);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: Image): void => {
     setSelectedImage(image);
     setModalIsOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setSelectedImage(null);
     setModalIsOpen(false);
   };
@@ -45,12 +46,12 @@ export default function App() {
       return;
     }
     
-    async function getImages() {
+    async function getImages(query: string, page: number): Promise<void> {
     
     try {
       setError(false);
       setIsLoading(true);
-      const data = await fetchGallery(query, page);
+      const data: Image[] = await fetchGallery(query, page);
       setGallery((prevGallery) => {
         return [...prevGallery, ...data];
       });
@@ -62,10 +63,10 @@ export default function App() {
     }
     }
     
-  getImages();
+  getImages(query, page);
   }, [page, query]);
   
-  const LoadMoreImg = gallery.length > 0 && !error && !isloading;
+  const LoadMoreImg: boolean = gallery.length > 0 && !error && !isloading;
 
   return (
 <div>
