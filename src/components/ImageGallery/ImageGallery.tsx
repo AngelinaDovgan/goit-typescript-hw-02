@@ -18,12 +18,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, openModal }) => {
             {images.map((image) => (
                 <li key={nanoid()} onClick={() => handleImgClick(image)} className={css.imgitem}>
                     <ImageCard image={image} onClick={() => handleImgClick(image)} />
-</li>
-            
-            ))}
+</li> ))}
 </ul>
-    )
-};
+)};
 
 export default ImageGallery;
 
