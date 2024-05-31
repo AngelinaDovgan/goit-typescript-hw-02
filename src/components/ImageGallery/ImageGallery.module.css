@@ -1,0 +1,19 @@
+.gallery {
+    list-style: none;
+    display: flex;
+    column-gap: 15px;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 35px;
+    gap: 100px;
+}
+
+.imgitem {
+    flex-shrink: 0;
+    border: 2mm ridge rgba(206, 53, 157, 0.6);
+    width: 300px;
+    height: 300px;
+    margin-bottom: 35px;
+}

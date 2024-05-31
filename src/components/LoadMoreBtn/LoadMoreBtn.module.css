@@ -1,0 +1,10 @@
+.btn {
+    background-color: rgba(206, 53, 157, 0.6);
+    margin-top: 48px;
+    color: white;
+    letter-spacing: 0.5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+:hover.btn{
+    background-color: rgb(107, 23, 107);
+}
